@@ -31,41 +31,33 @@ $(document).ready(function () {
   console.log(container);
   //TASK 3 inseriamo le icone nel container (possiamo creare una funzione tipo print() per inserire gli elementi e richiamarla qui)
 
-
   //TASK4 definiamo dei colori per le icone (blue, orange, purple)
 
   //TASK5 aggiungiamo dei colori usando una funzione
 
-newIcons = Icons.map((element) => {
-  element.family == "animals"
-    ? (element.color = "blue")
-    : element.family == "vegetables"
-    ? (element.color = "orange")
-    : (element.color = "purple");
-return element
-});
-
-console.log(newIcons);
-
-function print(array, selector) {
-  array.forEach((element) => {
-    selector.append(`
-      <div>
-        <i class="${element.prefix} ${element.type} ${element.color}"></i>
-      </div>`);
+  newIcons = Icons.map((element) => {
+    element.family == "animals"
+      ? (element.color = "blue")
+      : element.family == "vegetables"
+      ? (element.color = "orange")
+      : (element.color = "purple");
+    return element;
   });
-}
 
-const printIcons = print(newIcons, container);
-
-
+  console.log(newIcons);
 
   //TASK6 inseriamo le icone colorate nel container
 
-  
+  function print(array, selector) {
+    array.forEach((element) => {
+      selector.append(`
+      <div>
+        <i class="${element.prefix} ${element.type} ${element.color}"></i>
+      </div>`);
+    });
+  }
 
-
-
+  const printIcons = print(newIcons, container);
 });
 
 
