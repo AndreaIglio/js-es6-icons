@@ -48,6 +48,19 @@ $(document).ready(function () {
 
   const printIcons = print(Icons, container);
 
+
+
+
+  // Icons.forEach(element => {
+
+  //   container.append(`
+  //     <div>
+  //       <i class="${element.prefix} ${element.type}"></i>
+  //     </div>`
+  //   );
+  // })
+
+
 });
 
 
