@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // Creiamo array di oggetti per le icone con le seguenti proprieta: name, prefix, type, family 
+  //TASK 1 Creiamo array di oggetti per le icone con le seguenti proprieta: name, prefix, type, family 
 
   class icons {
     constructor (name, prefix, type, family){
@@ -13,11 +13,11 @@ $(document).ready(function () {
 
   const Icons = [
     new icons("cat", "fas", "fa-cat", "animals"),
-    new icons("dog", "fas", "fa-cat", "animals"),
+    new icons("dog", "fas", "fa-dog", "animals"),
     new icons("dove", "fas", "fa-dove", "animals"),
     new icons("spider", "fas", "fa-spider", "animals"),
     new icons("carrot", "fas", "fa-carrot", "vegetables"),
-    new icons("pepper", "fas", "fa-pepper", "vegetables"),
+    new icons("pepper", "fas", "fa-pepper-hot", "vegetables"),
     new icons("user-ninja", "fas", "fa-user-ninja", "users"),
     new icons("user-graduate", "fas", "fa-user-graduate", "users"),
     new icons("user-nurse", "fas", "fa-user-nurse", "users"),
@@ -26,23 +26,27 @@ $(document).ready(function () {
   console.log(Icons);
 
 
-  // Selezioniamo il container icons
+  //TASK 2 Selezioniamo il container icons
 
+  // const container = document.getElementsByClassName('div.icons')[0];
   const container = $('div.icons');
-  //inseriamo le icone nel container (possiamo creare una funzione tipo print() per inserire gli elementi e richiamarla qui)
+  console.log(container);
+  //TASK 3 inseriamo le icone nel container (possiamo creare una funzione tipo print() per inserire gli elementi e richiamarla qui)
 
 
-  Icons.forEach(element => {
+  function print(array,selector){
 
-    console.log(element.prefix, element.type);
+    array.forEach(element =>{
 
-    container.innerHTML += `
-    <div>
-      <i class="${element.prefix}${element.type}"></i>
-    </div>`
+        selector.append(`
+      <div>
+        <i class="${element.prefix} ${element.type}"></i>
+      </div>`
+      );
+      })
+  }
 
-  })
-
+  const printIcons = print(Icons, container);
 
 });
 
