@@ -27,7 +27,7 @@ $(document).ready(function () {
 
   // const container = document.getElementsByClassName('div.icons')[0];
   const container = $("div.icons");
-  console.log(container);
+
   //TASK 3 inseriamo le icone nel container (possiamo creare una funzione tipo print() per inserire gli elementi e richiamarla qui)
 
   //TASK4 definiamo dei colori per le icone (blue, orange, purple)
@@ -49,10 +49,15 @@ $(document).ready(function () {
 
   function print(array, selector) {
     array.forEach((element) => {
+
+      //potrei creare una const markup dove inserire ql da inserire nel dom
       selector.append(`
-      <div>
+      <div class = "${element.family}">
         <i class="${element.prefix} ${element.type} ${element.color}"></i>
-      </div>`);
+         <div class="title">${element.name}
+      </div>
+      </div>
+      `);
     });
   }
 
@@ -61,16 +66,13 @@ $(document).ready(function () {
   //TASK 7 estrapoliamo i tipi di icone
   
  familyList = newIcons.map(element => {
-
     return element.family;
-
-
   })
 
   const familyListUnique = familyList.filter((element,index) => {
-    console.log(
-      element,index,familyList.indexOf(element),familyList.indexOf(element) === index,
-    );
+    // console.log(
+    //   element,index,familyList.indexOf(element),familyList.indexOf(element) === index,
+    // );
     return familyList.indexOf(element) === index;
   });
 
@@ -82,23 +84,51 @@ $(document).ready(function () {
 
   const optionSelect = $('select');
 
-  familyListUnique.forEach(element => {
-
+  familyListUnique.forEach((element,index) => {
 
     optionSelect.append(`
 
-    <option value="">${element}</option>
-
+    <option value="${index}">${element}</option>
+    
     `);
-
 
   })
 
-
-
+  
 
   //TASK 9 al change mostriamo solo le icone filtrate
+  const animals = $('div.icons > div.animals');
+  const vegetables = $('div.icons > div.vegetables');
+  const users = $('div.icons > div.users');
+
+  optionSelect.change(function (e) { 
+    if (optionSelect.val() == 1) {
+      animals.hide();
+      vegetables.show();
+      users.hide();
+    } else if (optionSelect.val() == 0) {
+      vegetables.hide();
+      animals.show();
+      users.hide();
+    } else if (optionSelect.val() == 2) {
+      animals.hide();
+      users.show();
+      vegetables.hide();
+    } else if (optionSelect.val() == 3) {
+      animals.show();
+      users.show();
+      vegetables.show();
+    }
+  
+  });
+
+
+
+
   //TASK 10 mostriamo come passare un parametro a change e contemporaneamente destrutturiamo
+
+
+
 
   /* ---- FUNCTIONS ----*/
 });
